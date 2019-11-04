@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.github.omnbmh.cobra.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="org.github.omnbmh.cobra.entity.Role">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="no" property="no" jdbcType="VARCHAR"/>
+        <result column="create_at" property="createAt" jdbcType="TIMESTAMP"/>
+        <result column="creator" property="creator" jdbcType="VARCHAR"/>
+        <result column="modify_at" property="modifyAt" jdbcType="TIMESTAMP"/>
+        <result column="modifier" property="modifier" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="del_flag" property="delFlag" jdbcType="BIT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="name_zh" property="nameZh" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        id, no, create_at, creator, modify_at, modifier, remark, del_flag, name, name_zh
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.github.omnbmh.cobra.entity.RoleExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from sys_role
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_role
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from sys_role
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <delete id="deleteByExample" parameterType="org.github.omnbmh.cobra.entity.RoleExample">
+        delete from sys_role
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="org.github.omnbmh.cobra.entity.Role">
+        insert into sys_role (id, no, create_at,
+        creator, modify_at, modifier,
+        remark, del_flag, name,
+        name_zh)
+        values (#{id,jdbcType=BIGINT}, #{no,jdbcType=VARCHAR}, #{createAt,jdbcType=TIMESTAMP},
+        #{creator,jdbcType=VARCHAR}, #{modifyAt,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}, #{name,jdbcType=VARCHAR},
+        #{nameZh,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="org.github.omnbmh.cobra.entity.Role">
+        insert into sys_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="no != null">
+                no,
+            </if>
+            <if test="createAt != null">
+                create_at,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="modifyAt != null">
+                modify_at,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="nameZh != null">
+                name_zh,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="no != null">
+                #{no,jdbcType=VARCHAR},
+            </if>
+            <if test="createAt != null">
+                #{createAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyAt != null">
+                #{modifyAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=BIT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="nameZh != null">
+                #{nameZh,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="org.github.omnbmh.cobra.entity.RoleExample"
+            resultType="java.lang.Integer">
+        select count(*) from sys_role
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update sys_role
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.no != null">
+                no = #{record.no,jdbcType=VARCHAR},
+            </if>
+            <if test="record.createAt != null">
+                create_at = #{record.createAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.creator != null">
+                creator = #{record.creator,jdbcType=VARCHAR},
+            </if>
+            <if test="record.modifyAt != null">
+                modify_at = #{record.modifyAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.modifier != null">
+                modifier = #{record.modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="record.remark != null">
+                remark = #{record.remark,jdbcType=VARCHAR},
+            </if>
+            <if test="record.delFlag != null">
+                del_flag = #{record.delFlag,jdbcType=BIT},
+            </if>
+            <if test="record.name != null">
+                name = #{record.name,jdbcType=VARCHAR},
+            </if>
+            <if test="record.nameZh != null">
+                name_zh = #{record.nameZh,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update sys_role
+        set id = #{record.id,jdbcType=BIGINT},
+        no = #{record.no,jdbcType=VARCHAR},
+        create_at = #{record.createAt,jdbcType=TIMESTAMP},
+        creator = #{record.creator,jdbcType=VARCHAR},
+        modify_at = #{record.modifyAt,jdbcType=TIMESTAMP},
+        modifier = #{record.modifier,jdbcType=VARCHAR},
+        remark = #{record.remark,jdbcType=VARCHAR},
+        del_flag = #{record.delFlag,jdbcType=BIT},
+        name = #{record.name,jdbcType=VARCHAR},
+        name_zh = #{record.nameZh,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="org.github.omnbmh.cobra.entity.Role">
+        update sys_role
+        <set>
+            <if test="no != null">
+                no = #{no,jdbcType=VARCHAR},
+            </if>
+            <if test="createAt != null">
+                create_at = #{createAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyAt != null">
+                modify_at = #{modifyAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=BIT},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="nameZh != null">
+                name_zh = #{nameZh,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.github.omnbmh.cobra.entity.Role">
+        update sys_role
+        set no = #{no,jdbcType=VARCHAR},
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+        creator = #{creator,jdbcType=VARCHAR},
+        modify_at = #{modifyAt,jdbcType=TIMESTAMP},
+        modifier = #{modifier,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=VARCHAR},
+        del_flag = #{delFlag,jdbcType=BIT},
+        name = #{name,jdbcType=VARCHAR},
+        name_zh = #{nameZh,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <select id="getUserRolesByUserNo" resultMap="BaseResultMap">
+        SELECT t1.* FROM sys_role t1,sys_user_role t2 where t1.no = t2.role_no and t2.user_no =
+        #{userNo,jdbcType=VARCHAR};
+    </select>
+</mapper>

@@ -1,5 +1,6 @@
 package org.github.omnbmh.cobra.entity;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +10,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+@Data
 public class User implements UserDetails {
     private Long id;
 
@@ -34,26 +36,17 @@ public class User implements UserDetails {
 
     private Boolean delFlag;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNo() {
-        return no;
-    }
-
-    public void setNo(String no) {
-        this.no = no == null ? null : no.trim();
-    }
+    private List<Role> roles;
 
     // 获取当前用户对象所具有的角色信息
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+        if (roles != null){
+            for (Role role :roles){
+                authorities.add(new SimpleGrantedAuthority(role.getName()));
+            }
+        }
         return authorities;
     }
 
@@ -119,51 +112,4 @@ public class User implements UserDetails {
         this.isLocked = isLocked;
     }
 
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator == null ? null : creator.trim();
-    }
-
-    public Date getModifyAt() {
-        return modifyAt;
-    }
-
-    public void setModifyAt(Date modifyAt) {
-        this.modifyAt = modifyAt;
-    }
-
-    public String getModifier() {
-        return modifier;
-    }
-
-    public void setModifier(String modifier) {
-        this.modifier = modifier == null ? null : modifier.trim();
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
-    }
-
-    public Boolean getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(Boolean delFlag) {
-        this.delFlag = delFlag;
-    }
 }
