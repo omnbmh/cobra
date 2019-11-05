@@ -32,4 +32,6 @@ public interface RoleMapper {
     int updateByPrimaryKey(Role record);
 
     List<Role> getUserRolesByUserNo(String userNo);
+
+    List<Role> getApiRolesByApiNo(String apiNo);
 }

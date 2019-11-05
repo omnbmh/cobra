@@ -2,24 +2,11 @@ package org.github.omnbmh.cobra.entity;
 
 import java.util.Date;
 
-public class UserRole {
-    private Long id;
+import org.github.omnbmh.cobra.base.BaseEntity;
 
-    private String no;
+public class Api extends BaseEntity {
 
-    private Date createAt;
-
-    private String creator;
-
-    private Date modifyAt;
-
-    private String modifier;
-
-    private String remark;
-
-    private String userNo;
-
-    private String roleNo;
+    private String pattern;
 
     public Long getId() {
         return id;
@@ -27,14 +14,6 @@ public class UserRole {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNo() {
-        return no;
-    }
-
-    public void setNo(String no) {
-        this.no = no == null ? null : no.trim();
     }
 
     public Date getCreateAt() {
@@ -77,19 +56,27 @@ public class UserRole {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getUserNo() {
-        return userNo;
+    public String getNo() {
+        return no;
     }
 
-    public void setUserNo(String userNo) {
-        this.userNo = userNo == null ? null : userNo.trim();
+    public void setNo(String no) {
+        this.no = no == null ? null : no.trim();
     }
 
-    public String getRoleNo() {
-        return roleNo;
+    public Boolean getIsDel() {
+        return isDel;
     }
 
-    public void setRoleNo(String roleNo) {
-        this.roleNo = roleNo == null ? null : roleNo.trim();
+    public void setIsDel(Boolean isDel) {
+        this.isDel = isDel;
+    }
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern == null ? null : pattern.trim();
     }
 }

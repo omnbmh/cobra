@@ -4,12 +4,14 @@ import org.github.omnbmh.cobra.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -32,14 +34,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasRole("admin")
-                .antMatchers("/user/**").hasRole("user")
-                .anyRequest().authenticated()// 登录后就能访问
+                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+
+                    @Override
+                    public <O extends FilterSecurityInterceptor> O postProcess(O o) {
+                        o.setSecurityMetadataSource(cfisms());
+                        o.setAccessDecisionManager(new CobraAccessDecisionManager());
+                        return o;
+                    }
+                })
                 .and()
-                .formLogin()
-//                .loginPage("/login")
-                .loginProcessingUrl("/login").permitAll()
+                .formLogin().loginProcessingUrl("/login").permitAll()
                 .and()
                 .csrf().disable();
+    }
+
+    // 通过这种方式 可以注入@Autowire
+    @Bean
+    CobraFilterInvocationSecurityMetadataSource cfisms() {
+        return new CobraFilterInvocationSecurityMetadataSource();
     }
 }

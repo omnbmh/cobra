@@ -2,9 +2,9 @@ package org.github.omnbmh.cobra;
 
 import org.github.omnbmh.cobra.commons.tools.IdGenTools;
 import org.github.omnbmh.cobra.entity.*;
+import org.github.omnbmh.cobra.mapper.ApiMapper;
 import org.github.omnbmh.cobra.mapper.RoleMapper;
 import org.github.omnbmh.cobra.mapper.UserMapper;
-import org.github.omnbmh.cobra.mapper.UserRoleMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class MapperTest {
     RoleMapper roleMapper;
 
     @Autowired
-    UserRoleMapper userRoleMapper;
+    ApiMapper apiMapper;
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
@@ -57,22 +57,14 @@ public class MapperTest {
     }
 
     @Test
-    public void authAll() {
-        List<User> users = userMapper.selectByExample(new UserExample());
-        List<Role> roles = roleMapper.selectByExample(new RoleExample());
-
-        for (User user : users) {
-            for (Role role : roles) {
-                UserRole userRole = new UserRole();
-                userRole.setNo(IdGenTools.getId());
-                userRole.setUserNo(user.getNo());
-                userRole.setRoleNo(role.getNo());
-                userRole.setRemark(user.getUsername() + " - " + role.getName());
-                userRole.setCreateAt(new Date());
-                userRole.setCreator("system");
-                assert userRoleMapper.insertSelective(userRole) > 0;
-            }
-        }
+    public void inserApi() {
+        Api api = new Api();
+        api.preInsert();
+        api.setPattern("/user/hello");
+        apiMapper.insertSelective(api);
+        api.preInsert();
+        api.setPattern("/hello");
+        apiMapper.insertSelective(api);
     }
 
 }

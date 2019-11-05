@@ -294,4 +294,8 @@
         SELECT t1.* FROM sys_role t1,sys_user_role t2 where t1.no = t2.role_no and t2.user_no =
         #{userNo,jdbcType=VARCHAR};
     </select>
+    <select id="getApiRolesByApiNo" resultMap="BaseResultMap">
+        SELECT t1.* FROM sys_role t1,sys_api_role t2 where t1.no = t2.role_no and t2.api_no =
+        #{apiNo,jdbcType=VARCHAR};
+    </select>
 </mapper>

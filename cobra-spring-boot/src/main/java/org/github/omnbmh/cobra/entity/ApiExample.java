@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UserRoleExample {
+public class ApiExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public UserRoleExample() {
+    public ApiExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -162,76 +162,6 @@ public class UserRoleExample {
 
         public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoIsNull() {
-            addCriterion("no is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoIsNotNull() {
-            addCriterion("no is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoEqualTo(String value) {
-            addCriterion("no =", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoNotEqualTo(String value) {
-            addCriterion("no <>", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoGreaterThan(String value) {
-            addCriterion("no >", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoGreaterThanOrEqualTo(String value) {
-            addCriterion("no >=", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoLessThan(String value) {
-            addCriterion("no <", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoLessThanOrEqualTo(String value) {
-            addCriterion("no <=", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoLike(String value) {
-            addCriterion("no like", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoNotLike(String value) {
-            addCriterion("no not like", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoIn(List<String> values) {
-            addCriterion("no in", values, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoNotIn(List<String> values) {
-            addCriterion("no not in", values, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoBetween(String value1, String value2) {
-            addCriterion("no between", value1, value2, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoNotBetween(String value1, String value2) {
-            addCriterion("no not between", value1, value2, "no");
             return (Criteria) this;
         }
 
@@ -565,143 +495,203 @@ public class UserRoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserNoIsNull() {
-            addCriterion("user_no is null");
+        public Criteria andNoIsNull() {
+            addCriterion("no is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoIsNotNull() {
-            addCriterion("user_no is not null");
+        public Criteria andNoIsNotNull() {
+            addCriterion("no is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoEqualTo(String value) {
-            addCriterion("user_no =", value, "userNo");
+        public Criteria andNoEqualTo(String value) {
+            addCriterion("no =", value, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoNotEqualTo(String value) {
-            addCriterion("user_no <>", value, "userNo");
+        public Criteria andNoNotEqualTo(String value) {
+            addCriterion("no <>", value, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoGreaterThan(String value) {
-            addCriterion("user_no >", value, "userNo");
+        public Criteria andNoGreaterThan(String value) {
+            addCriterion("no >", value, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoGreaterThanOrEqualTo(String value) {
-            addCriterion("user_no >=", value, "userNo");
+        public Criteria andNoGreaterThanOrEqualTo(String value) {
+            addCriterion("no >=", value, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoLessThan(String value) {
-            addCriterion("user_no <", value, "userNo");
+        public Criteria andNoLessThan(String value) {
+            addCriterion("no <", value, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoLessThanOrEqualTo(String value) {
-            addCriterion("user_no <=", value, "userNo");
+        public Criteria andNoLessThanOrEqualTo(String value) {
+            addCriterion("no <=", value, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoLike(String value) {
-            addCriterion("user_no like", value, "userNo");
+        public Criteria andNoLike(String value) {
+            addCriterion("no like", value, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoNotLike(String value) {
-            addCriterion("user_no not like", value, "userNo");
+        public Criteria andNoNotLike(String value) {
+            addCriterion("no not like", value, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoIn(List<String> values) {
-            addCriterion("user_no in", values, "userNo");
+        public Criteria andNoIn(List<String> values) {
+            addCriterion("no in", values, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoNotIn(List<String> values) {
-            addCriterion("user_no not in", values, "userNo");
+        public Criteria andNoNotIn(List<String> values) {
+            addCriterion("no not in", values, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoBetween(String value1, String value2) {
-            addCriterion("user_no between", value1, value2, "userNo");
+        public Criteria andNoBetween(String value1, String value2) {
+            addCriterion("no between", value1, value2, "no");
             return (Criteria) this;
         }
 
-        public Criteria andUserNoNotBetween(String value1, String value2) {
-            addCriterion("user_no not between", value1, value2, "userNo");
+        public Criteria andNoNotBetween(String value1, String value2) {
+            addCriterion("no not between", value1, value2, "no");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoIsNull() {
-            addCriterion("role_no is null");
+        public Criteria andIsDelIsNull() {
+            addCriterion("is_del is null");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoIsNotNull() {
-            addCriterion("role_no is not null");
+        public Criteria andIsDelIsNotNull() {
+            addCriterion("is_del is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoEqualTo(String value) {
-            addCriterion("role_no =", value, "roleNo");
+        public Criteria andIsDelEqualTo(Boolean value) {
+            addCriterion("is_del =", value, "isDel");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoNotEqualTo(String value) {
-            addCriterion("role_no <>", value, "roleNo");
+        public Criteria andIsDelNotEqualTo(Boolean value) {
+            addCriterion("is_del <>", value, "isDel");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoGreaterThan(String value) {
-            addCriterion("role_no >", value, "roleNo");
+        public Criteria andIsDelGreaterThan(Boolean value) {
+            addCriterion("is_del >", value, "isDel");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoGreaterThanOrEqualTo(String value) {
-            addCriterion("role_no >=", value, "roleNo");
+        public Criteria andIsDelGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_del >=", value, "isDel");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoLessThan(String value) {
-            addCriterion("role_no <", value, "roleNo");
+        public Criteria andIsDelLessThan(Boolean value) {
+            addCriterion("is_del <", value, "isDel");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoLessThanOrEqualTo(String value) {
-            addCriterion("role_no <=", value, "roleNo");
+        public Criteria andIsDelLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_del <=", value, "isDel");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoLike(String value) {
-            addCriterion("role_no like", value, "roleNo");
+        public Criteria andIsDelIn(List<Boolean> values) {
+            addCriterion("is_del in", values, "isDel");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoNotLike(String value) {
-            addCriterion("role_no not like", value, "roleNo");
+        public Criteria andIsDelNotIn(List<Boolean> values) {
+            addCriterion("is_del not in", values, "isDel");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoIn(List<String> values) {
-            addCriterion("role_no in", values, "roleNo");
+        public Criteria andIsDelBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_del between", value1, value2, "isDel");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoNotIn(List<String> values) {
-            addCriterion("role_no not in", values, "roleNo");
+        public Criteria andIsDelNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_del not between", value1, value2, "isDel");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoBetween(String value1, String value2) {
-            addCriterion("role_no between", value1, value2, "roleNo");
+        public Criteria andPatternIsNull() {
+            addCriterion("pattern is null");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNoNotBetween(String value1, String value2) {
-            addCriterion("role_no not between", value1, value2, "roleNo");
+        public Criteria andPatternIsNotNull() {
+            addCriterion("pattern is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternEqualTo(String value) {
+            addCriterion("pattern =", value, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternNotEqualTo(String value) {
+            addCriterion("pattern <>", value, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternGreaterThan(String value) {
+            addCriterion("pattern >", value, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternGreaterThanOrEqualTo(String value) {
+            addCriterion("pattern >=", value, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternLessThan(String value) {
+            addCriterion("pattern <", value, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternLessThanOrEqualTo(String value) {
+            addCriterion("pattern <=", value, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternLike(String value) {
+            addCriterion("pattern like", value, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternNotLike(String value) {
+            addCriterion("pattern not like", value, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternIn(List<String> values) {
+            addCriterion("pattern in", values, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternNotIn(List<String> values) {
+            addCriterion("pattern not in", values, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternBetween(String value1, String value2) {
+            addCriterion("pattern between", value1, value2, "pattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andPatternNotBetween(String value1, String value2) {
+            addCriterion("pattern not between", value1, value2, "pattern");
             return (Criteria) this;
         }
     }
