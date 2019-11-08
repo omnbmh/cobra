@@ -4,9 +4,9 @@ import java.util.Date;
 
 import org.github.omnbmh.cobra.base.BaseEntity;
 
-public class Api extends BaseEntity {
+public class Resource extends BaseEntity {
 
-    private String pattern;
+    private String urlPattern;
 
     public Long getId() {
         return id;
@@ -14,6 +14,22 @@ public class Api extends BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no == null ? null : no.trim();
+    }
+
+    public String getUrlPattern() {
+        return urlPattern;
+    }
+
+    public void setUrlPattern(String urlPattern) {
+        this.urlPattern = urlPattern == null ? null : urlPattern.trim();
     }
 
     public Date getCreateAt() {
@@ -56,27 +72,11 @@ public class Api extends BaseEntity {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getNo() {
-        return no;
-    }
-
-    public void setNo(String no) {
-        this.no = no == null ? null : no.trim();
-    }
-
     public Boolean getIsDel() {
         return isDel;
     }
 
     public void setIsDel(Boolean isDel) {
         this.isDel = isDel;
-    }
-
-    public String getPattern() {
-        return pattern;
-    }
-
-    public void setPattern(String pattern) {
-        this.pattern = pattern == null ? null : pattern.trim();
     }
 }

@@ -2,7 +2,7 @@ package org.github.omnbmh.cobra;
 
 import org.github.omnbmh.cobra.commons.tools.IdGenTools;
 import org.github.omnbmh.cobra.entity.*;
-import org.github.omnbmh.cobra.mapper.ApiMapper;
+import org.github.omnbmh.cobra.mapper.ResourceMapper;
 import org.github.omnbmh.cobra.mapper.RoleMapper;
 import org.github.omnbmh.cobra.mapper.UserMapper;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class MapperTest {
     RoleMapper roleMapper;
 
     @Autowired
-    ApiMapper apiMapper;
+    ResourceMapper resourceMapper;
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
@@ -37,7 +37,7 @@ public class MapperTest {
         User user = new User();
         user.setNo(IdGenTools.getId());
         user.setUsername("testuser");
-        user.setPsswd(passwordEncoder.encode("123456"));
+        user.setPasswd(passwordEncoder.encode("123456"));
         user.setIsEnable(true);
         user.setIsLocked(false);
         user.setCreateAt(new Date());
@@ -57,14 +57,14 @@ public class MapperTest {
     }
 
     @Test
-    public void inserApi() {
-        Api api = new Api();
-        api.preInsert();
-        api.setPattern("/user/hello");
-        apiMapper.insertSelective(api);
-        api.preInsert();
-        api.setPattern("/hello");
-        apiMapper.insertSelective(api);
+    public void insertResource() {
+        Resource resource = new Resource();
+        resource.preInsert();
+        resource.setUrlPattern("/user/hello");
+        resourceMapper.insertSelective(resource);
+        resource.preInsert();
+        resource.setUrlPattern("/hello");
+        resourceMapper.insertSelective(resource);
     }
 
 }

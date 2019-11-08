@@ -1,5 +1,6 @@
 package org.github.omnbmh.cobra.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @RequestMapping("/hello")
-    public String hello() {
-        return "Hello Cobra!";
+    public ResponseEntity hello() {
+        return ResponseEntity.ok().body("Hello Cobra!");
     }
 
     @RequestMapping("/admin/hello")

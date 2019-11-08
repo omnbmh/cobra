@@ -42,8 +42,8 @@
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <table tableName="sys_user" domainObjectName="User"></table>
-        <table tableName="sys_role" domainObjectName="Role"></table>
-        <table tableName="sys_api" domainObjectName="Api"></table>
+<!--        <table tableName="sys_user" domainObjectName="User"></table>-->
+<!--        <table tableName="sys_role" domainObjectName="Role"></table>-->
+        <table tableName="sys_resource" domainObjectName="Resource"></table>
     </context>
 </generatorConfiguration>

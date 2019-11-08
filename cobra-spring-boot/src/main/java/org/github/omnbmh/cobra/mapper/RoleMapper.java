@@ -33,5 +33,5 @@ public interface RoleMapper {
 
     List<Role> getUserRolesByUserNo(String userNo);
 
-    List<Role> getApiRolesByApiNo(String apiNo);
+    List<Role> getResourceRolesByResourceNo(String resourceNo);
 }

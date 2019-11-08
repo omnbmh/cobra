@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ApiExample {
+public class ResourceExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ApiExample() {
+    public ResourceExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -162,6 +162,146 @@ public class ApiExample {
 
         public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoIsNull() {
+            addCriterion("no is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoIsNotNull() {
+            addCriterion("no is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoEqualTo(String value) {
+            addCriterion("no =", value, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoNotEqualTo(String value) {
+            addCriterion("no <>", value, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoGreaterThan(String value) {
+            addCriterion("no >", value, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoGreaterThanOrEqualTo(String value) {
+            addCriterion("no >=", value, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoLessThan(String value) {
+            addCriterion("no <", value, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoLessThanOrEqualTo(String value) {
+            addCriterion("no <=", value, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoLike(String value) {
+            addCriterion("no like", value, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoNotLike(String value) {
+            addCriterion("no not like", value, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoIn(List<String> values) {
+            addCriterion("no in", values, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoNotIn(List<String> values) {
+            addCriterion("no not in", values, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoBetween(String value1, String value2) {
+            addCriterion("no between", value1, value2, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoNotBetween(String value1, String value2) {
+            addCriterion("no not between", value1, value2, "no");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternIsNull() {
+            addCriterion("url_pattern is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternIsNotNull() {
+            addCriterion("url_pattern is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternEqualTo(String value) {
+            addCriterion("url_pattern =", value, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternNotEqualTo(String value) {
+            addCriterion("url_pattern <>", value, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternGreaterThan(String value) {
+            addCriterion("url_pattern >", value, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternGreaterThanOrEqualTo(String value) {
+            addCriterion("url_pattern >=", value, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternLessThan(String value) {
+            addCriterion("url_pattern <", value, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternLessThanOrEqualTo(String value) {
+            addCriterion("url_pattern <=", value, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternLike(String value) {
+            addCriterion("url_pattern like", value, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternNotLike(String value) {
+            addCriterion("url_pattern not like", value, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternIn(List<String> values) {
+            addCriterion("url_pattern in", values, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternNotIn(List<String> values) {
+            addCriterion("url_pattern not in", values, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternBetween(String value1, String value2) {
+            addCriterion("url_pattern between", value1, value2, "urlPattern");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlPatternNotBetween(String value1, String value2) {
+            addCriterion("url_pattern not between", value1, value2, "urlPattern");
             return (Criteria) this;
         }
 
@@ -495,76 +635,6 @@ public class ApiExample {
             return (Criteria) this;
         }
 
-        public Criteria andNoIsNull() {
-            addCriterion("no is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoIsNotNull() {
-            addCriterion("no is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoEqualTo(String value) {
-            addCriterion("no =", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoNotEqualTo(String value) {
-            addCriterion("no <>", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoGreaterThan(String value) {
-            addCriterion("no >", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoGreaterThanOrEqualTo(String value) {
-            addCriterion("no >=", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoLessThan(String value) {
-            addCriterion("no <", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoLessThanOrEqualTo(String value) {
-            addCriterion("no <=", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoLike(String value) {
-            addCriterion("no like", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoNotLike(String value) {
-            addCriterion("no not like", value, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoIn(List<String> values) {
-            addCriterion("no in", values, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoNotIn(List<String> values) {
-            addCriterion("no not in", values, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoBetween(String value1, String value2) {
-            addCriterion("no between", value1, value2, "no");
-            return (Criteria) this;
-        }
-
-        public Criteria andNoNotBetween(String value1, String value2) {
-            addCriterion("no not between", value1, value2, "no");
-            return (Criteria) this;
-        }
-
         public Criteria andIsDelIsNull() {
             addCriterion("is_del is null");
             return (Criteria) this;
@@ -622,76 +692,6 @@ public class ApiExample {
 
         public Criteria andIsDelNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_del not between", value1, value2, "isDel");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternIsNull() {
-            addCriterion("pattern is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternIsNotNull() {
-            addCriterion("pattern is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternEqualTo(String value) {
-            addCriterion("pattern =", value, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternNotEqualTo(String value) {
-            addCriterion("pattern <>", value, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternGreaterThan(String value) {
-            addCriterion("pattern >", value, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternGreaterThanOrEqualTo(String value) {
-            addCriterion("pattern >=", value, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternLessThan(String value) {
-            addCriterion("pattern <", value, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternLessThanOrEqualTo(String value) {
-            addCriterion("pattern <=", value, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternLike(String value) {
-            addCriterion("pattern like", value, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternNotLike(String value) {
-            addCriterion("pattern not like", value, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternIn(List<String> values) {
-            addCriterion("pattern in", values, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternNotIn(List<String> values) {
-            addCriterion("pattern not in", values, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternBetween(String value1, String value2) {
-            addCriterion("pattern between", value1, value2, "pattern");
-            return (Criteria) this;
-        }
-
-        public Criteria andPatternNotBetween(String value1, String value2) {
-            addCriterion("pattern not between", value1, value2, "pattern");
             return (Criteria) this;
         }
     }

@@ -3,10 +3,11 @@ package org.github.omnbmh.cobra.base;
 import lombok.Data;
 import org.github.omnbmh.cobra.commons.tools.IdGenTools;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class BaseEntity {
+public class BaseEntity implements Serializable {
     protected Long id;
 
     protected String no;

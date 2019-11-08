@@ -1,6 +1,7 @@
 package org.github.omnbmh.cobra.entity;
 
 import lombok.Data;
+import org.github.omnbmh.cobra.base.BaseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,30 +12,15 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class User implements UserDetails {
-    private Long id;
-
-    private String no;
+public class User extends BaseEntity implements UserDetails {
 
     private String username;
 
-    private String psswd;
+    private String passwd;
 
     private Boolean isEnable;
 
     private Boolean isLocked;
-
-    private Date createAt;
-
-    private String creator;
-
-    private Date modifyAt;
-
-    private String modifier;
-
-    private String remark;
-
-    private Boolean delFlag;
 
     private List<Role> roles;
 
@@ -42,8 +28,8 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
-        if (roles != null){
-            for (Role role :roles){
+        if (roles != null) {
+            for (Role role : roles) {
                 authorities.add(new SimpleGrantedAuthority(role.getName()));
             }
         }
@@ -52,7 +38,7 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return psswd;
+        return passwd;
     }
 
     @Override
@@ -83,33 +69,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return isEnable;
     }
-
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
-
-    public String getPsswd() {
-        return psswd;
-    }
-
-    public void setPsswd(String psswd) {
-        this.psswd = psswd == null ? null : psswd.trim();
-    }
-
-    public Boolean getIsEnable() {
-        return isEnable;
-    }
-
-    public void setIsEnable(Boolean isEnable) {
-        this.isEnable = isEnable;
-    }
-
-    public Boolean getIsLocked() {
-        return isLocked;
-    }
-
-    public void setIsLocked(Boolean isLocked) {
-        this.isLocked = isLocked;
-    }
-
 }

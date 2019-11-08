@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="no" property="no" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="psswd" property="psswd" jdbcType="VARCHAR" />
+    <result column="passwd" property="passwd" jdbcType="VARCHAR" />
     <result column="is_enable" property="isEnable" jdbcType="BIT" />
     <result column="is_locked" property="isLocked" jdbcType="BIT" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
@@ -13,7 +13,7 @@
     <result column="modify_at" property="modifyAt" jdbcType="TIMESTAMP" />
     <result column="modifier" property="modifier" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="del_flag" property="delFlag" jdbcType="BIT" />
+    <result column="is_del" property="isDel" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -74,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, no, username, psswd, is_enable, is_locked, create_at, creator, modify_at, modifier, 
-    remark, del_flag
+    id, no, username, passwd, is_enable, is_locked, create_at, creator, modify_at, modifier, 
+    remark, is_del
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.github.omnbmh.cobra.entity.UserExample" >
     select
@@ -109,14 +109,14 @@
   </delete>
   <insert id="insert" parameterType="org.github.omnbmh.cobra.entity.User" >
     insert into sys_user (id, no, username, 
-      psswd, is_enable, is_locked, 
+      passwd, is_enable, is_locked, 
       create_at, creator, modify_at, 
-      modifier, remark, del_flag
+      modifier, remark, is_del
       )
     values (#{id,jdbcType=BIGINT}, #{no,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{psswd,jdbcType=VARCHAR}, #{isEnable,jdbcType=BIT}, #{isLocked,jdbcType=BIT}, 
+      #{passwd,jdbcType=VARCHAR}, #{isEnable,jdbcType=BIT}, #{isLocked,jdbcType=BIT}, 
       #{createAt,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifyAt,jdbcType=TIMESTAMP}, 
-      #{modifier,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}
+      #{modifier,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{isDel,jdbcType=BIT}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.github.omnbmh.cobra.entity.User" >
@@ -131,8 +131,8 @@
       <if test="username != null" >
         username,
       </if>
-      <if test="psswd != null" >
-        psswd,
+      <if test="passwd != null" >
+        passwd,
       </if>
       <if test="isEnable != null" >
         is_enable,
@@ -155,8 +155,8 @@
       <if test="remark != null" >
         remark,
       </if>
-      <if test="delFlag != null" >
-        del_flag,
+      <if test="isDel != null" >
+        is_del,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -169,8 +169,8 @@
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="psswd != null" >
-        #{psswd,jdbcType=VARCHAR},
+      <if test="passwd != null" >
+        #{passwd,jdbcType=VARCHAR},
       </if>
       <if test="isEnable != null" >
         #{isEnable,jdbcType=BIT},
@@ -193,8 +193,8 @@
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="delFlag != null" >
-        #{delFlag,jdbcType=BIT},
+      <if test="isDel != null" >
+        #{isDel,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -216,8 +216,8 @@
       <if test="record.username != null" >
         username = #{record.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.psswd != null" >
-        psswd = #{record.psswd,jdbcType=VARCHAR},
+      <if test="record.passwd != null" >
+        passwd = #{record.passwd,jdbcType=VARCHAR},
       </if>
       <if test="record.isEnable != null" >
         is_enable = #{record.isEnable,jdbcType=BIT},
@@ -240,8 +240,8 @@
       <if test="record.remark != null" >
         remark = #{record.remark,jdbcType=VARCHAR},
       </if>
-      <if test="record.delFlag != null" >
-        del_flag = #{record.delFlag,jdbcType=BIT},
+      <if test="record.isDel != null" >
+        is_del = #{record.isDel,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -253,7 +253,7 @@
     set id = #{record.id,jdbcType=BIGINT},
       no = #{record.no,jdbcType=VARCHAR},
       username = #{record.username,jdbcType=VARCHAR},
-      psswd = #{record.psswd,jdbcType=VARCHAR},
+      passwd = #{record.passwd,jdbcType=VARCHAR},
       is_enable = #{record.isEnable,jdbcType=BIT},
       is_locked = #{record.isLocked,jdbcType=BIT},
       create_at = #{record.createAt,jdbcType=TIMESTAMP},
@@ -261,7 +261,7 @@
       modify_at = #{record.modifyAt,jdbcType=TIMESTAMP},
       modifier = #{record.modifier,jdbcType=VARCHAR},
       remark = #{record.remark,jdbcType=VARCHAR},
-      del_flag = #{record.delFlag,jdbcType=BIT}
+      is_del = #{record.isDel,jdbcType=BIT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -275,8 +275,8 @@
       <if test="username != null" >
         username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="psswd != null" >
-        psswd = #{psswd,jdbcType=VARCHAR},
+      <if test="passwd != null" >
+        passwd = #{passwd,jdbcType=VARCHAR},
       </if>
       <if test="isEnable != null" >
         is_enable = #{isEnable,jdbcType=BIT},
@@ -299,8 +299,8 @@
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="delFlag != null" >
-        del_flag = #{delFlag,jdbcType=BIT},
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=BIT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -309,7 +309,7 @@
     update sys_user
     set no = #{no,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
-      psswd = #{psswd,jdbcType=VARCHAR},
+      passwd = #{passwd,jdbcType=VARCHAR},
       is_enable = #{isEnable,jdbcType=BIT},
       is_locked = #{isLocked,jdbcType=BIT},
       create_at = #{createAt,jdbcType=TIMESTAMP},
@@ -317,7 +317,7 @@
       modify_at = #{modifyAt,jdbcType=TIMESTAMP},
       modifier = #{modifier,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      del_flag = #{delFlag,jdbcType=BIT}
+      is_del = #{isDel,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="loadUserByUsername" resultMap="BaseResultMap">

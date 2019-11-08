@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.github.omnbmh.cobra.mapper.ApiMapper" >
-  <resultMap id="BaseResultMap" type="org.github.omnbmh.cobra.entity.Api" >
+<mapper namespace="org.github.omnbmh.cobra.mapper.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="org.github.omnbmh.cobra.entity.Resource" >
     <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="no" property="no" jdbcType="VARCHAR" />
+    <result column="url_pattern" property="urlPattern" jdbcType="VARCHAR" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
     <result column="creator" property="creator" jdbcType="VARCHAR" />
     <result column="modify_at" property="modifyAt" jdbcType="TIMESTAMP" />
     <result column="modifier" property="modifier" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="no" property="no" jdbcType="VARCHAR" />
     <result column="is_del" property="isDel" jdbcType="BIT" />
-    <result column="pattern" property="pattern" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,15 +71,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, create_at, creator, modify_at, modifier, remark, no, is_del, pattern
+    id, no, url_pattern, create_at, creator, modify_at, modifier, remark, is_del
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.github.omnbmh.cobra.entity.ApiExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.github.omnbmh.cobra.entity.ResourceExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from sys_api
+    from sys_resource
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -90,32 +90,40 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from sys_api
+    from sys_resource
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from sys_api
+    delete from sys_resource
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="org.github.omnbmh.cobra.entity.ApiExample" >
-    delete from sys_api
+  <delete id="deleteByExample" parameterType="org.github.omnbmh.cobra.entity.ResourceExample" >
+    delete from sys_resource
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.github.omnbmh.cobra.entity.Api" >
-    insert into sys_api (id, create_at, creator, 
-      modify_at, modifier, remark, 
-      no, is_del, pattern)
-    values (#{id,jdbcType=BIGINT}, #{createAt,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, 
-      #{modifyAt,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
-      #{no,jdbcType=VARCHAR}, #{isDel,jdbcType=BIT}, #{pattern,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="org.github.omnbmh.cobra.entity.Resource" >
+    insert into sys_resource (id, no, url_pattern, 
+      create_at, creator, modify_at, 
+      modifier, remark, is_del
+      )
+    values (#{id,jdbcType=BIGINT}, #{no,jdbcType=VARCHAR}, #{urlPattern,jdbcType=VARCHAR}, 
+      #{createAt,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifyAt,jdbcType=TIMESTAMP}, 
+      #{modifier,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{isDel,jdbcType=BIT}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="org.github.omnbmh.cobra.entity.Api" >
-    insert into sys_api
+  <insert id="insertSelective" parameterType="org.github.omnbmh.cobra.entity.Resource" >
+    insert into sys_resource
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="urlPattern != null" >
+        url_pattern,
       </if>
       <if test="createAt != null" >
         create_at,
@@ -132,19 +140,19 @@
       <if test="remark != null" >
         remark,
       </if>
-      <if test="no != null" >
-        no,
-      </if>
       <if test="isDel != null" >
         is_del,
-      </if>
-      <if test="pattern != null" >
-        pattern,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
+      </if>
+      <if test="no != null" >
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="urlPattern != null" >
+        #{urlPattern,jdbcType=VARCHAR},
       </if>
       <if test="createAt != null" >
         #{createAt,jdbcType=TIMESTAMP},
@@ -161,28 +169,28 @@
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="no != null" >
-        #{no,jdbcType=VARCHAR},
-      </if>
       <if test="isDel != null" >
         #{isDel,jdbcType=BIT},
       </if>
-      <if test="pattern != null" >
-        #{pattern,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.github.omnbmh.cobra.entity.ApiExample" resultType="java.lang.Integer" >
-    select count(*) from sys_api
+  <select id="countByExample" parameterType="org.github.omnbmh.cobra.entity.ResourceExample" resultType="java.lang.Integer" >
+    select count(*) from sys_resource
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update sys_api
+    update sys_resource
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.no != null" >
+        no = #{record.no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.urlPattern != null" >
+        url_pattern = #{record.urlPattern,jdbcType=VARCHAR},
       </if>
       <if test="record.createAt != null" >
         create_at = #{record.createAt,jdbcType=TIMESTAMP},
@@ -199,14 +207,8 @@
       <if test="record.remark != null" >
         remark = #{record.remark,jdbcType=VARCHAR},
       </if>
-      <if test="record.no != null" >
-        no = #{record.no,jdbcType=VARCHAR},
-      </if>
       <if test="record.isDel != null" >
         is_del = #{record.isDel,jdbcType=BIT},
-      </if>
-      <if test="record.pattern != null" >
-        pattern = #{record.pattern,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -214,23 +216,29 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update sys_api
+    update sys_resource
     set id = #{record.id,jdbcType=BIGINT},
+      no = #{record.no,jdbcType=VARCHAR},
+      url_pattern = #{record.urlPattern,jdbcType=VARCHAR},
       create_at = #{record.createAt,jdbcType=TIMESTAMP},
       creator = #{record.creator,jdbcType=VARCHAR},
       modify_at = #{record.modifyAt,jdbcType=TIMESTAMP},
       modifier = #{record.modifier,jdbcType=VARCHAR},
       remark = #{record.remark,jdbcType=VARCHAR},
-      no = #{record.no,jdbcType=VARCHAR},
-      is_del = #{record.isDel,jdbcType=BIT},
-      pattern = #{record.pattern,jdbcType=VARCHAR}
+      is_del = #{record.isDel,jdbcType=BIT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.github.omnbmh.cobra.entity.Api" >
-    update sys_api
+  <update id="updateByPrimaryKeySelective" parameterType="org.github.omnbmh.cobra.entity.Resource" >
+    update sys_resource
     <set >
+      <if test="no != null" >
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="urlPattern != null" >
+        url_pattern = #{urlPattern,jdbcType=VARCHAR},
+      </if>
       <if test="createAt != null" >
         create_at = #{createAt,jdbcType=TIMESTAMP},
       </if>
@@ -246,28 +254,22 @@
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="no != null" >
-        no = #{no,jdbcType=VARCHAR},
-      </if>
       <if test="isDel != null" >
         is_del = #{isDel,jdbcType=BIT},
-      </if>
-      <if test="pattern != null" >
-        pattern = #{pattern,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.github.omnbmh.cobra.entity.Api" >
-    update sys_api
-    set create_at = #{createAt,jdbcType=TIMESTAMP},
+  <update id="updateByPrimaryKey" parameterType="org.github.omnbmh.cobra.entity.Resource" >
+    update sys_resource
+    set no = #{no,jdbcType=VARCHAR},
+      url_pattern = #{urlPattern,jdbcType=VARCHAR},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
       creator = #{creator,jdbcType=VARCHAR},
       modify_at = #{modifyAt,jdbcType=TIMESTAMP},
       modifier = #{modifier,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      no = #{no,jdbcType=VARCHAR},
-      is_del = #{isDel,jdbcType=BIT},
-      pattern = #{pattern,jdbcType=VARCHAR}
+      is_del = #{isDel,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
